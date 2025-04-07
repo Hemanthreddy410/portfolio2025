@@ -7,11 +7,11 @@ import Head from "next/head";
 
 // SEO keywords and descriptions
 const SEO = {
-  title: "Rushikesh Nimkar | Projects Portfolio",
+  title: "Hemanth Reddy Yarraguravagari | Projects Portfolio",
   description:
-    "Explore my portfolio of web development and software engineering projects. Featuring Next.js, React, TypeScript, and blockchain applications.",
+    "Explore my portfolio of data engineering, ServiceNow development, and software engineering projects featuring Python, SQL, AWS, and data visualization applications.",
   keywords:
-    "portfolio, portfolio-template, web developer portfolio, software engineer, React projects, Next.js portfolio, TypeScript, blockchain projects, GitHub contributions, developer showcase, open source, frontend developer, full stack developer, responsive design, UI/UX, modern portfolio",
+    "portfolio, data engineer, software engineer, ServiceNow, Python, SQL, ETL/ELT, AWS, data visualization, CMDB, machine learning, dashboard, computer vision, Streamlit, Plotly, Claude API",
 };
 
 type MediaType = "image" | "youtube";
@@ -32,56 +32,55 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: "CryptoRage",
+    title: "CSV AI Analytics",
     description:
-      "Cryptorage is a Chrome extension that integrates with Sui wallet to provide secure storage and sharing of screenshots within teams. It allows users to capture, store, and share screenshots with team members, all while leveraging blockchain technology for enhanced security and transparency.",
+      "A data analysis platform combining AI-powered insights with interactive visualizations for diverse datasets. Features dual AI assistants (rule-based and Claude-powered) for automated data analysis and visualization generation. Includes an extensive visualization system with 25+ chart types and custom dashboard builder functionality, optimized for large datasets through efficient memory management, caching, and intelligent sampling techniques.",
     media: {
       type: "image",
-      src: "/projects/cryptorage.webp",
+      src: "/projects/csv-ai-analytics.webp",
     },
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-    link: "https://cryptorage-login.vercel.app/",
-    github: "https://github.com/Rushikeshnimkar/CryptoRage",
+    tags: ["Python", "Streamlit", "Plotly", "Pandas", "NumPy", "Claude API"],
+    link: "",
+    github: "https://github.com/Hemanthreddy410/csv-ai-analytics",
   },
   {
     id: 2,
-    title: "GitSplit",
+    title: "ServiceNow CMDB Health Dashboard",
     description:
-      "A Web App for Open-Source projects to raise funding and split among its contributors. Discover and Showcase your projects on this platform.",
+      "A comprehensive CMDB health monitoring dashboard using Performance Analytics, Dashboards, and custom scripting for enterprise-level visibility. Developed automated CMDB data quality checks, health audit rules, and remediation workflows that increased CMDB accuracy from 65% to 92% and maintained data integrity. Created custom indicators and KPIs to track CMDB completeness, compliance, relationship accuracy, and staleness with real-time visualization.",
     media: {
       type: "image",
-      src: "/projects/gitsplit.webp",
+      src: "/projects/servicenow-cmdb.webp",
     },
-    tags: ["React", "Next.js", "Tailwind", "SQL", "Golang"],
+    tags: ["ServiceNow", "JavaScript", "Performance Analytics", "ITSM", "Dashboards"],
     link: "",
-    github: "https://github.com/GitSplit-org",
+    github: "https://github.com/Hemanthreddy410/servicenow-cmdb-dashboard",
   },
   {
     id: 3,
-    title: "Communepro",
+    title: "Demand Forecasting Project",
     description:
-      "Communepro is a modern, customizable NPM package that provides a comment section component for React applications. It offers features like nested replies, real-time updates, dark mode support, and a responsive design, making it easy to enhance your app with an intuitive and engaging commenting experience.",
+      "Implemented demand forecasting utilizing historical Adidas outlet sales data, improving inventory planning by 22%. Explored and compared time series algorithms (exponential smoothing, SARIMA, Prophet, ARIMA) for prediction. Conducted comprehensive data preprocessing, ensuring data quality and converting insights into actionable strategies. Led hyperparameter tuning for exponential smoothing models, optimizing forecasting accuracy.",
     media: {
       type: "image",
-      src: "/projects/communepro.webp",
+      src: "/projects/demand-forecasting.webp",
     },
-    tags: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
-    link: "https://communepro.vercel.app/",
-    github: "https://www.npmjs.com/package/addcomment",
+    tags: ["Python", "Pandas", "Scikit-learn", "Time Series Analysis", "Data Visualization"],
+    link: "",
+    github: "https://github.com/Hemanthreddy410/demand-forecasting",
   },
   {
     id: 4,
-    title: "Terminal AI Assistant",
+    title: "Pothole Detection System",
     description:
-      "A powerful CLI tool that helps users interact with the Windows command line using natural language. Built with Node.js and powered by Qwen: Qwen2.5 VL 72B Instruct AI.",
+      "A robust automatic pothole detection system for image and video inputs with 85% accuracy. Implemented computer vision algorithms that enabled autonomous detection and prediction processes. Applied encryption and web scraping for secure and efficient data gathering from multiple sources. Designed an intuitive UI with Python's Tkinter, ensuring user-friendly interaction and visualization.",
     media: {
-      type: "youtube",
-      src: "https://youtu.be/TwaQDbr75z4",
+      type: "image",
+      src: "/projects/pothole-detection.webp",
     },
-    tags: ["Node.js", "TypeScript", "Qwen AI", "Commander.js", "Chalk"],
-    link: "https://www.npmjs.com/package/terminal-ai-assistant",
-    github:
-      "https://github.com/Rushikeshnimkar/terminal-ai-assistant-windows.git",
+    tags: ["Python", "OpenCV", "Tkinter", "Computer Vision", "Machine Learning"],
+    link: "",
+    github: "https://github.com/Hemanthreddy410/pothole-detection",
   },
 ];
 
@@ -145,10 +144,11 @@ export default function Projects() {
       keywords: SEO.keywords,
       mainEntity: {
         "@type": "Person",
-        name: "Rushikesh Nimkar",
-        url: "https://github.com/Rushikeshnimkar",
+        name: "Hemanth Reddy Yarraguravagari",
+        url: "https://github.com/Hemanthreddy410",
         sameAs: [
-          "https://github.com/Rushikeshnimkar",
+          "https://github.com/Hemanthreddy410",
+          "https://linkedin.com/in/hemanth-reddy",
           // Add other social profiles if available
         ],
       },
@@ -273,7 +273,10 @@ export default function Projects() {
                     className="flex flex-wrap gap-3 mt-auto"
                   >
                     <button
-                      onClick={() => window.open(project.github, "_blank")}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(project.github, "_blank");
+                      }}
                       className="flex items-center gap-2 text-white/80 hover:text-white bg-neutral-800 hover:bg-neutral-700 px-3 py-1.5 rounded-lg transition-colors text-xs sm:text-sm"
                       aria-label={`View source code for ${project.title} on GitHub`}
                       title="View on GitHub"
@@ -283,7 +286,10 @@ export default function Projects() {
                     </button>
                     {project.link && (
                       <button
-                        onClick={() => window.open(project.link, "_blank")}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(project.link, "_blank");
+                        }}
                         className="flex items-center gap-2 text-white/90 hover:text-white bg-blue-600/80 hover:bg-blue-600 px-3 py-1.5 rounded-lg transition-colors text-xs sm:text-sm"
                         aria-label={`View live demo of ${project.title}`}
                         title="View Live Demo"
@@ -298,12 +304,39 @@ export default function Projects() {
             ))}
           </div>
 
+          {/* Additional Projects Section */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold text-center text-neutral-200 mb-8">
+              Professional Contributions
+            </h2>
+            <div className="bg-neutral-900/50 p-6 rounded-xl border border-neutral-800">
+              <p className="text-neutral-300 text-center max-w-3xl mx-auto">
+                In addition to my personal projects, I've led significant enterprise-level implementations 
+                including ETL/ELT pipelines processing 5TB+ daily data, ServiceNow customizations that 
+                improved IT service delivery by 35%, and data warehouse solutions that enhanced query performance by 25%.
+              </p>
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-neutral-800/50 p-4 rounded-lg">
+                  <h3 className="text-blue-400 font-medium mb-2">Data Engineering</h3>
+                  <p className="text-sm text-neutral-400">Designed and optimized ETL/ELT pipelines using AWS Glue, Python, and SQL with 99.9% data reliability.</p>
+                </div>
+                <div className="bg-neutral-800/50 p-4 rounded-lg">
+                  <h3 className="text-blue-400 font-medium mb-2">ServiceNow Development</h3>
+                  <p className="text-sm text-neutral-400">Implemented complex business rules, UI policies, and script includes to automate ITSM workflows across multiple instances.</p>
+                </div>
+                <div className="bg-neutral-800/50 p-4 rounded-lg">
+                  <h3 className="text-blue-400 font-medium mb-2">Data Visualization</h3>
+                  <p className="text-sm text-neutral-400">Created interactive business intelligence dashboards using Tableau and Excel that increased customer retention by 18%.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* SEO-friendly footer section */}
           <footer className="mt-20 text-center text-sm text-neutral-600 hidden">
             <p>
-              Portfolio template showcasing web development and software
-              engineering projects. Built with Next.js, React, TypeScript, and
-              Tailwind CSS.
+              Portfolio showcasing data engineering, ServiceNow development, and software
+              engineering projects by Hemanth Reddy Yarraguravagari.
             </p>
           </footer>
         </div>

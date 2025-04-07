@@ -4,10 +4,10 @@ import { FlipWords } from "@/components/ui/flip-words";
 import { SparklesCore } from "@/components/ui/sparkles";
 export default function About() {
   const words = [
-    "play video games",
-    "do photography",
-    "explore new places",
-    "listen to music",
+    "analyze data",
+    "explore cloud computing",
+    "build ML models",
+    "read technical books",
   ];
   return (
     <div
@@ -80,33 +80,28 @@ export default function About() {
                 id="about-intro"
                 className="text-2xl md:text-3xl font-semibold text-neutral-200 leading-relaxed"
               >
-                I&apos;m a passionate developer and a curious Engineer.
+                I&apos;m a versatile Software Engineer with expertise in data engineering and ServiceNow development.
               </p>
 
               <p
                 id="about-description-1"
                 className="text-lg md:text-xl text-neutral-300 leading-relaxed"
               >
-                I&apos;m always looking out for new things to explore. I love to
-                collaborate with like-minded people who are fueled by curiosity.
-                I play around Golang and Javascript ecosystems for my web dev
-                projects.
+                With over 4 years of professional experience, I specialize in designing ETL/ELT pipelines, implementing ServiceNow solutions, and developing data-driven applications. I&apos;m passionate about optimizing data infrastructure and automating business processes using Python, SQL, JavaScript, and cloud technologies.
               </p>
 
               <p
                 id="about-description-2"
                 className="text-lg md:text-xl text-neutral-300 leading-relaxed"
               >
-                Currently I&apos;m diving into Machine Learning after watching
-                many cool projects built around image generators and i&apos;m
-                ready to dive into it
+                Currently pursuing my Master&apos;s degree in Computer and Information Sciences at Florida International University, I&apos;m diving deeper into advanced software engineering, AI, and machine learning to enhance my skills in developing intelligent data solutions that drive business value.
               </p>
 
               <div
                 id="about-hobbies"
                 className="text-lg md:text-xl text-neutral-300 leading-relaxed"
               >
-                When i&apos;m not coding, i usually
+                When I&apos;m not coding, I usually
                 <FlipWords words={words} className="text-white" />
               </div>
 

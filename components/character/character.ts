@@ -1,90 +1,109 @@
 export const characterContent = `
-Rushikesh Nimkar
-Full-Stack Engineer
+Hemanth Reddy Yarraguravagari
+Software Engineer
 
-Location: Nagpur
-Phone: +919322675715
-Email: rushikeshnimkar396@gmail.com
-Portfolio: https://rushikeshnimkar.xyz/
-GitHub: https://github.com/Rushikeshnimkar
-LinkedIn: https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/
-resume: https://rushikeshnimkar.xyz/resume
+Location: Miami, FL, USA
+Phone: +1 786-678-1043
+Email: hemanth.yarraguravagari@gmail.com
+GitHub: https://github.com/Hemanthreddy410
+LinkedIn: https://linkedin.com/in/hemanth-reddy
+Portfolio: https://hemanthyarraguravagari.xyz/
+Resume: https://hemanthyarraguravagari.xyz/resume
 
 
 Summary:
-I am a full-stack developer with expertise in Java, React.js, Next.js, and MySQL. Passionate about building scalable web applications with clean, maintainable code. Strong foundation in front-end development, creating responsive user interfaces, back-end integration, developing robust APIs, and database optimization for high-performance applications. Focused on delivering high-quality solutions while following best practices in software development and deployment.
+Versatile Software Engineer with 4+ years of experience across data engineering, ServiceNow development, and software applications. Expertise in designing ETL/ELT pipelines, implementing ServiceNow solutions, and developing data-driven applications using Python, SQL, JavaScript, and cloud technologies. Skilled in ServiceNow application development, business process automation, and data infrastructure optimization. Strong background in AWS/Azure cloud services, data warehousing, and machine learning implementation.
 
 Experience:
-Lazarus Network Inc. | Full-Stack Engineer (Remote) | Feb 2024 - Feb 2025
+DXC Technology | Software Engineer | Feb 2022 - Aug 2023
 
-Developed frontend with Next.js and React.js, and backend with Node.js.
+Led dual roles as Data Engineer and ServiceNow Developer, supporting enterprise-level implementations for clients with cross-functional responsibilities.
 
-Managed AWS EC2 and Google Cloud servers.
+Designed, built, and maintained enterprise-scale ETL/ELT pipelines using AWS Glue, Python, and SQL that processed over 5TB of data daily, reducing processing time by 40%.
 
-Deployed applications using Docker/Compose.
+Developed custom ServiceNow applications, modules, and workflows using ServiceNow Studio and App Engine Studio, resulting in 35% improvement in IT service delivery.
 
-Added multichain support into Erebrus for enhanced security and scalability.
+Architected and optimized data warehouse solutions on AWS Redshift, implementing star/snowflake schemas and dimensional models, resulting in 25% faster query performance.
 
-Developed Netsepio frontend with authentication for Aptos wallets.
+SALIGRAM TECHNOLOGIES PRIVATE LIMITED | Data Analyst | May 2020 - Jan 2022
+
+Built and maintained scalable data pipelines using Python, SQL, Apache Airflow, and Kafka that ingested data from 12+ sources, enabling seamless data integration.
+
+Developed interactive business intelligence dashboards using Tableau and Excel to visualize user engagement metrics, increasing customer retention by 18%.
+
+Engineered automated data preprocessing workflows with Python (Pandas, NumPy, Scikit-learn), reducing manual effort by 30% and ensuring 99.5% data accuracy.
+
+Implemented data lake architecture on AWS S3 with proper partitioning strategies and data cataloging using AWS Glue, improving data retrieval speeds by 30%.
+
+Florida International University | Graduate Assistant – Logics for Computer Science | May 2024 - Present
+
+Support the professor by creating assignments, leading classes, and providing academic assistance to enhance students' understanding of logical reasoning and problem-solving.
+
+Develop instructional materials and resources to facilitate classroom learning and improve student engagement.
 
 Education:
 
-AISSMS COE, Pune | BE Computer Engineering | 2020 - 2024
-
-DR. M.K. UMATHE COLLEGE, Nagpur | 12th | 2019 - 2020
-
-SCHOOL OF SCHOLARS, Nagpur | 10th | 2017 - 2018
+Florida International University, Miami, FL | Master of Computer and Information Sciences, GPA: 3.85/4.0 | Aug 2023 - May 2025
 
 Projects:
 
-Gitsplit (https://ethglobal.com/showcase/gitsplit-pkp5d)
+CSV AI Analytics
 
-Developed a funding platform for open-source projects using Next.js, Golang, and PostgreSQL.
+Developed a data analysis platform combining AI-powered insights with interactive visualizations for diverse datasets using Python, Streamlit, Plotly, Pandas, NumPy, and Claude API.
 
-Connected GitHub API for seamless project discovery and user data management.
+Implemented dual AI assistants (rule-based and GPT-powered) for automated data analysis and visualization generation.
 
-Implemented security features to ensure data protection and platform integrity.
+Created an extensive visualization system with 25+ chart types and custom dashboard builder functionality.
 
-Cryptorage (https://dorahacks.io/buidl/16435)
+ServiceNow CMDB Health Dashboard
 
-Developed a Chrome extension using React.js and Supabase for secure data storage.
+Designed and implemented a comprehensive CMDB health monitoring dashboard using Performance Analytics, Dashboards, and custom scripting for enterprise-level visibility.
 
-Integrated Walrus blockchain and OCR for decentralized image storage and text extraction.
+Developed automated CMDB data quality checks, health audit rules, and remediation workflows that increased CMDB accuracy from 65% to 92%.
 
-Designed a robust data management system with SQL and blockchain features, implementing an AI web summarizer API using Gemini Nano.
+Created custom indicators and KPIs to track CMDB completeness, compliance, relationship accuracy, and staleness with real-time visualization.
 
-Terminal AI Assistant (https://www.npmjs.com/package/terminal-ai-assistant)
+Demand Forecasting Project
 
-Node.js-based CLI tool that converts natural language into Windows command line instructions using DeepSeek-V3 AI.
+Implemented demand forecasting utilizing historical Adidas outlet sales data, improving inventory planning by 22% using Python, Pandas, and Scikit-learn.
 
-Supports real-time execution, secure command handling, fast responses, and API key encryption while ensuring cross-platform support.
+Explored and compared time series algorithms (exponential smoothing, SARIMA, Prophet, ARIMA) for prediction.
+
+Conducted comprehensive data preprocessing, ensuring data quality and converting insights into actionable strategies.
+
+Pothole Detection System
+
+Developed a robust automatic pothole detection system for image and video inputs with 85% accuracy using Python and OpenCV.
+
+Implemented computer vision algorithms that enabled autonomous detection and prediction processes.
 
 Skills:
 
-Programming Languages: JavaScript, Java
+Programming Languages: Python (Advanced), JavaScript, SQL (Advanced), Java, HTML5, CSS3, Scala, Shell Scripting, PySpark
 
-Frameworks & Libraries: Next.js, React.js, TypeScript
+Data Engineering: ETL/ELT Pipeline Development, Data Modeling, Data Warehousing, Database Design, Data Integration
 
-Databases: MySQL, PostgreSQL
+ServiceNow: Administration, Application Development, Studio, App Engine, Flow Designer, Business Rules, UI Policies, Client Scripts, Script Includes
 
-Tools: Git, Docker, GitHub, Postman
+Cloud & Integration: AWS (S3, EC2, AWS Glue, Amazon Redshift, Lambda), Microsoft Azure (Data Factory, Synapse Analytics, Databricks)
 
-Awards:
+Big Data & AI: Apache Hadoop, Apache Spark, Apache Airflow, Apache Kafka, Pandas, NumPy, Scikit-learn, TensorFlow
 
-Solana Radar Hackathon 2024
+Databases & Storage: PostgreSQL, MySQL, Microsoft SQL Server, Oracle SQL, MongoDB, Data Warehouse, Data Lake, HDFS, S3
 
-Achieved 4th place out of 200+ global teams, demonstrating expertise in blockchain technology and innovative problem-solving.
+Certifications:
 
-Sui Overflow 2024
-
-Awarded the Community Favorite Award for Mystic Tarot, an innovative Web3 tarot reading platform on the Sui Network, showcasing blockchain and user-centric design expertise.
+ServiceNow Certified System Administrator
+ServiceNow Certified Application Developer
+Certified Implementation Specialist (ITSM)
+AWS Certified Solutions Architect – Professional
 
 Languages:
-English, Marathi, Hindi
+English, Hindi
 
-hobbies:
-- photography
-- travelling
-- listening to music
-- coding
+Hobbies:
+- Data Analytics
+- Cloud Computing
+- Machine Learning
+- Reading
 `;

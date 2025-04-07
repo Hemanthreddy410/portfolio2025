@@ -7,10 +7,10 @@ import Head from "next/head";
 
 // SEO keywords and descriptions
 const SEO = {
-  title: "Rushikesh Nimkar | GitHub Contributions",
-  description: "View my GitHub contribution history and coding activity.",
+  title: "Hemanth Reddy Yarraguravagari | GitHub Contributions",
+  description: "View my GitHub contribution history and software development activity.",
   keywords:
-    "GitHub contributions, coding activity, open source, developer portfolio",
+    "GitHub contributions, coding activity, data engineering, ServiceNow, Python, SQL, AWS, developer portfolio",
 };
 
 export default function Contributions() {
@@ -75,10 +75,13 @@ export default function Contributions() {
                   <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
                     Contribution Activity
                   </h2>
+                  <p className="text-neutral-300 text-sm mt-2">
+                    Projects focused on data engineering, ETL pipelines, ServiceNow customization, and AI analytics
+                  </p>
                 </div>
 
                 <motion.a
-                  href="https://github.com/Rushikeshnimkar"
+                  href="https://github.com/Hemanthreddy410"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 rounded-lg z-10 bg-neutral-800/80 hover:bg-neutral-700/80 transition-all duration-300 text-sm border border-neutral-700/50 hover:border-blue-500/30 group"
@@ -88,6 +91,31 @@ export default function Contributions() {
                   <FiGithub className="w-4 h-4 group-hover:text-blue-400 transition-colors" />
                   <span>View GitHub Profile</span>
                 </motion.a>
+              </motion.div>
+
+              {/* Featured repositories */}
+              <motion.div 
+                variants={itemVariants}
+                className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4"
+              >
+                <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700/30 hover:border-blue-500/20 transition-all duration-300">
+                  <h3 className="font-medium text-blue-400">CSV AI Analytics</h3>
+                  <p className="text-sm text-neutral-300 mt-1">Data analysis platform combining AI-powered insights with interactive visualizations for diverse datasets.</p>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    <span className="px-2 py-1 bg-neutral-700/50 text-neutral-300 text-xs rounded-full">Python</span>
+                    <span className="px-2 py-1 bg-neutral-700/50 text-neutral-300 text-xs rounded-full">Streamlit</span>
+                    <span className="px-2 py-1 bg-neutral-700/50 text-neutral-300 text-xs rounded-full">Claude API</span>
+                  </div>
+                </div>
+                <div className="p-4 bg-neutral-800/50 rounded-lg border border-neutral-700/30 hover:border-blue-500/20 transition-all duration-300">
+                  <h3 className="font-medium text-blue-400">ServiceNow CMDB Health Dashboard</h3>
+                  <p className="text-sm text-neutral-300 mt-1">Enterprise-level CMDB health monitoring dashboard using Performance Analytics and custom scripting.</p>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    <span className="px-2 py-1 bg-neutral-700/50 text-neutral-300 text-xs rounded-full">ServiceNow</span>
+                    <span className="px-2 py-1 bg-neutral-700/50 text-neutral-300 text-xs rounded-full">JavaScript</span>
+                    <span className="px-2 py-1 bg-neutral-700/50 text-neutral-300 text-xs rounded-full">Performance Analytics</span>
+                  </div>
+                </div>
               </motion.div>
 
               {/* Contribution graph */}
@@ -100,7 +128,7 @@ export default function Contributions() {
                       transition={{ duration: 0.5, delay: 5 }}
                       className="w-full"
                     >
-                      <GitHubContributions username="Rushikeshnimkar" />
+                      <GitHubContributions username="Hemanthreddy410" />
                     </motion.div>
 
                     {/* Loading animation overlay */}
@@ -168,6 +196,24 @@ export default function Contributions() {
                   </div>
                 )}
               </div>
+
+              {/* Tech stack */}
+              <motion.div 
+                variants={itemVariants}
+                className="mt-8 pt-8 border-t border-neutral-800"
+              >
+                <h3 className="text-lg font-semibold mb-4 text-neutral-200">Primary Technologies</h3>
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-3 py-1.5 bg-blue-500/10 text-blue-400 rounded-full text-sm">Python</span>
+                  <span className="px-3 py-1.5 bg-blue-500/10 text-blue-400 rounded-full text-sm">SQL</span>
+                  <span className="px-3 py-1.5 bg-blue-500/10 text-blue-400 rounded-full text-sm">ServiceNow</span>
+                  <span className="px-3 py-1.5 bg-blue-500/10 text-blue-400 rounded-full text-sm">JavaScript</span>
+                  <span className="px-3 py-1.5 bg-blue-500/10 text-blue-400 rounded-full text-sm">AWS</span>
+                  <span className="px-3 py-1.5 bg-blue-500/10 text-blue-400 rounded-full text-sm">Azure</span>
+                  <span className="px-3 py-1.5 bg-blue-500/10 text-blue-400 rounded-full text-sm">ETL/ELT</span>
+                  <span className="px-3 py-1.5 bg-blue-500/10 text-blue-400 rounded-full text-sm">Data Warehousing</span>
+                </div>
+              </motion.div>
             </motion.div>
           </motion.section>
         </div>

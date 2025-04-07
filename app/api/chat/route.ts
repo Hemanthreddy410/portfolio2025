@@ -16,8 +16,8 @@ import { queryVectorStore } from "@/lib/embeddings";
 // Add CORS check middleware
 function isAllowedOrigin(origin: string | null) {
   const allowedOrigins = [
-    "https://rushikeshnimkar.xyz",
-    "https://www.rushikeshnimkar.xyz",
+    "https://hemanthyarraguravagari.xyz",
+    "https://www.hemanthyarraguravagari.xyz",
 
     // Include localhost for development(uncomment for development)
     // "http://localhost:3000",
@@ -51,12 +51,13 @@ function needsWebSearch(message: string): boolean {
     "2023",
     "2024",
     "2025",
-    "sui",
-    "solana",
-    "erebrus",
-    "netsepio",
+    "servicenow",
+    "etl",
+    "data engineering",
+    "aws",
+    "azure",
     "search",
-    "deepseek",
+    "claude",
   ]);
 
   const lowerMessage = message.toLowerCase();
@@ -69,15 +70,15 @@ function needsWebSearch(message: string): boolean {
 const SKILLS_PATTERN =
   /skills|technologies|tech stack|programming|languages|frameworks|tools|libraries|proficient|expertise|capable|abilities/i;
 const PROJECTS_PATTERN =
-  /projects|portfolio|work|applications|apps|websites|developed|built|created|made|showcase|gitsplit|cryptorage|terminal ai|mystic tarot/i;
+  /projects|portfolio|work|applications|apps|websites|developed|built|created|made|showcase|csv ai|servicenow|demand forecasting|pothole detection/i;
 const EXPERIENCE_PATTERN =
-  /experience|work history|job|career|background|employment|company|lazarus|position|role/i;
+  /experience|work history|job|career|background|employment|company|dxc|saligram|position|role/i;
 const EDUCATION_PATTERN =
-  /education|degree|university|college|school|academic|study|studied|aissms|engineering|be|computer|pune/i;
+  /education|degree|university|college|school|academic|study|studied|florida|international|master|computer|information/i;
 const CONTACT_PATTERN =
   /contact|email|phone|reach|get in touch|connect|social media|linkedin|github|twitter|message|call/i;
-const AWARDS_PATTERN =
-  /awards|achievements|recognition|hackathon|solana|radar|sui|overflow|won|prize|honor/i;
+const CERTIFICATIONS_PATTERN =
+  /certifications|certified|certificate|credentials|qualifications|aws|servicenow|system administrator|application developer|implementation specialist|solutions architect/i;
 const LINKS_PATTERN =
   /links|urls|websites|resources|portfolio|resume|github|linkedin|social|profiles|connect|follow|check out|visit/i;
 
@@ -87,7 +88,7 @@ const GITHUB_PATTERN = /github|code|repository|repositories|source code/i;
 const LINKEDIN_PATTERN = /linkedin|professional profile|professional network/i;
 const PORTFOLIO_PATTERN = /portfolio website|personal website|portfolio site/i;
 const PROJECT_LINKS_PATTERN =
-  /project links|project urls|project websites|hackathon projects/i;
+  /project links|project urls|project websites|project github/i;
 
 // Add more specific patterns for individual contact types
 const EMAIL_PATTERN =
@@ -97,12 +98,14 @@ const LOCATION_PATTERN =
   /location|address|where.*live|where.*based|city|town|where.*from/i;
 
 // Add specific patterns for individual projects
-const GITSPLIT_PATTERN =
-  /gitsplit|funding platform|open-source funding|ethglobal/i;
-const CRYPTORAGE_PATTERN =
-  /cryptorage|chrome extension|secure storage|dorahacks|walrus blockchain/i;
-const TERMINAL_AI_PATTERN =
-  /terminal ai|assistant|cli tool|command line|npm package|terminal-ai-assistant/i;
+const CSV_AI_PATTERN =
+  /csv ai|analytics|streamlit|plotly|claude|data analysis|visualization/i;
+const SERVICENOW_PATTERN =
+  /servicenow|cmdb|health dashboard|performance analytics|dashboards/i;
+const DEMAND_PATTERN =
+  /demand forecasting|adidas|sales data|inventory planning|time series|sarima|prophet|arima/i;
+const POTHOLE_PATTERN =
+  /pothole detection|opencv|tkinter|computer vision|detection system/i;
 
 // Update the detectQueryType function to handle specific project types
 function detectQueryType(message: string): string | null {
@@ -110,23 +113,33 @@ function detectQueryType(message: string): string | null {
 
   // Check for specific project types
   if (
-    GITSPLIT_PATTERN.test(lowerMessage) &&
-    !CRYPTORAGE_PATTERN.test(lowerMessage) &&
-    !TERMINAL_AI_PATTERN.test(lowerMessage)
+    CSV_AI_PATTERN.test(lowerMessage) &&
+    !SERVICENOW_PATTERN.test(lowerMessage) &&
+    !DEMAND_PATTERN.test(lowerMessage) &&
+    !POTHOLE_PATTERN.test(lowerMessage)
   )
-    return "gitsplit_project";
+    return "csv_ai_project";
   if (
-    CRYPTORAGE_PATTERN.test(lowerMessage) &&
-    !GITSPLIT_PATTERN.test(lowerMessage) &&
-    !TERMINAL_AI_PATTERN.test(lowerMessage)
+    SERVICENOW_PATTERN.test(lowerMessage) &&
+    !CSV_AI_PATTERN.test(lowerMessage) &&
+    !DEMAND_PATTERN.test(lowerMessage) &&
+    !POTHOLE_PATTERN.test(lowerMessage)
   )
-    return "cryptorage_project";
+    return "servicenow_project";
   if (
-    TERMINAL_AI_PATTERN.test(lowerMessage) &&
-    !GITSPLIT_PATTERN.test(lowerMessage) &&
-    !CRYPTORAGE_PATTERN.test(lowerMessage)
+    DEMAND_PATTERN.test(lowerMessage) &&
+    !CSV_AI_PATTERN.test(lowerMessage) &&
+    !SERVICENOW_PATTERN.test(lowerMessage) &&
+    !POTHOLE_PATTERN.test(lowerMessage)
   )
-    return "terminal_ai_project";
+    return "demand_forecasting_project";
+  if (
+    POTHOLE_PATTERN.test(lowerMessage) &&
+    !CSV_AI_PATTERN.test(lowerMessage) &&
+    !SERVICENOW_PATTERN.test(lowerMessage) &&
+    !DEMAND_PATTERN.test(lowerMessage)
+  )
+    return "pothole_detection_project";
 
   // Check for specific contact types
   if (
@@ -158,7 +171,7 @@ function detectQueryType(message: string): string | null {
   if (EXPERIENCE_PATTERN.test(lowerMessage)) return "experience";
   if (EDUCATION_PATTERN.test(lowerMessage)) return "education";
   if (CONTACT_PATTERN.test(lowerMessage)) return "contact";
-  if (AWARDS_PATTERN.test(lowerMessage)) return "awards";
+  if (CERTIFICATIONS_PATTERN.test(lowerMessage)) return "certifications";
   if (LINKS_PATTERN.test(lowerMessage)) return "links";
 
   return null;
@@ -226,8 +239,8 @@ class OpenRouterChatModel extends ChatOpenAI {
           method: "POST",
           headers: {
             Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-            "HTTP-Referer": "https://rushikeshnimkar.xyz",
-            "X-Title": "Rushikesh's Portfolio",
+            "HTTP-Referer": "https://hemanthyarraguravagari.xyz",
+            "X-Title": "Hemanth's Portfolio",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -277,37 +290,36 @@ const CACHE_TTL = 1000 * 60 * 30; // 30 minutes
 function generateStructuredResponse(queryType: string): string {
   // Define individual project templates
   const projectTemplates: Record<string, any> = {
-    gitsplit_project: [
+    csv_ai_project: [
       {
-        title: "Gitsplit",
-        description:
-          "A funding platform for open-source projects using Next.js, Golang, and PostgreSQL.",
-        technologies: ["Next.js", "Golang", "PostgreSQL", "GitHub API"],
-        link: "https://ethglobal.com/showcase/gitsplit-pkp5d",
+        title: "CSV AI Analytics",
+        description: "A data analysis platform combining AI-powered insights with interactive visualizations for diverse datasets.",
+        technologies: ["Python", "Streamlit", "Plotly", "Pandas", "NumPy", "Claude API"],
+        period: "Jan 2025 - Mar 2025"
       },
     ],
-    cryptorage_project: [
+    servicenow_project: [
       {
-        title: "Cryptorage",
-        description:
-          "Chrome extension using React.js and Supabase for secure data storage with blockchain integration.",
-        technologies: [
-          "React.js",
-          "Supabase",
-          "Walrus Blockchain",
-          "OCR",
-          "Gemini Nano",
-        ],
-        link: "https://dorahacks.io/buidl/16435",
+        title: "ServiceNow CMDB Health Dashboard",
+        description: "A comprehensive CMDB health monitoring dashboard using Performance Analytics, Dashboards, and custom scripting for enterprise-level visibility.",
+        technologies: ["ServiceNow", "Performance Analytics", "JavaScript", "Dashboards"],
+        period: "Aug 2022 - Dec 2022"
       },
     ],
-    terminal_ai_project: [
+    demand_forecasting_project: [
       {
-        title: "Terminal AI Assistant",
-        description:
-          "Node.js CLI tool that converts natural language into Windows command line instructions.",
-        technologies: ["Node.js", "DeepSeek-V3 AI", "CLI"],
-        link: "https://www.npmjs.com/package/terminal-ai-assistant",
+        title: "Demand Forecasting Project",
+        description: "Implemented demand forecasting utilizing historical Adidas outlet sales data, improving inventory planning by 22%.",
+        technologies: ["Python", "Pandas", "Scikit-learn", "Time Series Analysis"],
+        period: "Aug 2023 - Dec 2023"
+      },
+    ],
+    pothole_detection_project: [
+      {
+        title: "Pothole Detection System",
+        description: "A robust automatic pothole detection system for image and video inputs with 85% accuracy.",
+        technologies: ["Python", "OpenCV", "Tkinter", "Computer Vision"],
+        period: "Aug 2023 - Dec 2023"
       },
     ],
   };
@@ -315,15 +327,15 @@ function generateStructuredResponse(queryType: string): string {
   // Define individual contact templates
   const contactTemplates: Record<string, any> = {
     email_contact: {
-      email: "rushikeshnimkar396@gmail.com",
+      email: "hemanth.yarraguravagari@gmail.com",
       type: "Email",
     },
     phone_contact: {
-      phone: "+919322675715",
+      phone: "+1 786-678-1043",
       type: "Phone",
     },
     location_contact: {
-      location: "Nagpur",
+      location: "Miami, FL, USA",
       type: "Location",
     },
   };
@@ -333,48 +345,51 @@ function generateStructuredResponse(queryType: string): string {
     resume_link: [
       {
         title: "Resume",
-        url: "https://rushikeshnimkar.xyz/resume",
-        description:
-          "View my detailed resume with skills, experience, and education",
+        url: "https://hemanthyarraguravagari.xyz/resume",
+        description: "View my detailed resume with skills, experience, and education",
       },
     ],
     github_link: [
       {
         title: "GitHub Profile",
-        url: "https://github.com/Rushikeshnimkar",
-        description:
-          "Check out my code repositories and open-source contributions",
+        url: "https://github.com/Hemanthreddy410",
+        description: "Check out my code repositories and projects",
       },
     ],
     linkedin_link: [
       {
         title: "LinkedIn Profile",
-        url: "https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/",
+        url: "https://linkedin.com/in/hemanth-reddy",
         description: "Connect with me professionally on LinkedIn",
       },
     ],
     portfolio_link: [
       {
         title: "Portfolio Website",
-        url: "https://rushikeshnimkar.xyz",
+        url: "https://hemanthyarraguravagari.xyz",
         description: "My personal portfolio showcasing projects and skills",
       },
     ],
     project_links: [
       {
-        title: "Gitsplit Project",
-        url: "https://ethglobal.com/showcase/gitsplit-pkp5d",
-        description: "Funding platform for open-source projects",
+        title: "CSV AI Analytics",
+        url: "https://github.com/Hemanthreddy410/csv-ai-analytics",
+        description: "Data analysis platform with AI-powered insights",
       },
       {
-        title: "Cryptorage Project",
-        url: "https://dorahacks.io/buidl/16435",
-        description: "Chrome extension for secure data storage",
+        title: "ServiceNow CMDB Health Dashboard",
+        url: "https://github.com/Hemanthreddy410/servicenow-cmdb-dashboard",
+        description: "CMDB health monitoring dashboard",
       },
       {
-        title: "Terminal AI Assistant",
-        url: "https://www.npmjs.com/package/terminal-ai-assistant",
-        description: "CLI tool for natural language command conversion",
+        title: "Demand Forecasting Project",
+        url: "https://github.com/Hemanthreddy410/demand-forecasting",
+        description: "Forecasting model for inventory planning",
+      },
+      {
+        title: "Pothole Detection System",
+        url: "https://github.com/Hemanthreddy410/pothole-detection",
+        description: "Computer vision system for pothole detection",
       },
     ],
   };
@@ -382,133 +397,135 @@ function generateStructuredResponse(queryType: string): string {
   // Define the structured data templates for general categories
   const structuredDataTemplates: Record<string, any> = {
     skills: [
+      { name: "Python (Advanced)", category: "Programming Language" },
       { name: "JavaScript", category: "Programming Language" },
+      { name: "SQL (Advanced)", category: "Database" },
       { name: "Java", category: "Programming Language" },
-      { name: "React.js", category: "Frontend Framework" },
-      { name: "Next.js", category: "Frontend Framework" },
-      { name: "TypeScript", category: "Programming Language" },
-      { name: "Node.js", category: "Backend" },
-      { name: "MySQL", category: "Database" },
-      { name: "PostgreSQL", category: "Database" },
-      { name: "Docker", category: "DevOps" },
-      { name: "Git", category: "Version Control" },
-      { name: "AWS EC2", category: "Cloud" },
-      { name: "Google Cloud", category: "Cloud" },
+      { name: "ServiceNow", category: "Platform" },
+      { name: "ETL/ELT Pipeline Development", category: "Data Engineering" },
+      { name: "Data Modeling", category: "Data Engineering" },
+      { name: "Data Warehousing", category: "Data Engineering" },
+      { name: "AWS (S3, EC2, AWS Glue, Redshift, Lambda)", category: "Cloud" },
+      { name: "Azure (Data Factory, Synapse Analytics)", category: "Cloud" },
+      { name: "Apache Spark", category: "Big Data" },
+      { name: "Apache Airflow", category: "Workflow Management" },
+      { name: "Pandas, NumPy, Scikit-learn", category: "Data Science" },
+      { name: "Tableau, Power BI", category: "BI & Analytics" },
+      { name: "CI/CD, Docker, Kubernetes", category: "DevOps" },
     ],
     projects: [
       {
-        title: "Gitsplit",
-        description:
-          "A funding platform for open-source projects using Next.js, Golang, and PostgreSQL.",
-        technologies: ["Next.js", "Golang", "PostgreSQL", "GitHub API"],
-        link: "https://ethglobal.com/showcase/gitsplit-pkp5d",
+        title: "CSV AI Analytics",
+        description: "A data analysis platform combining AI-powered insights with interactive visualizations for diverse datasets.",
+        technologies: ["Python", "Streamlit", "Plotly", "Pandas", "NumPy", "Claude API"],
+        period: "Jan 2025 - Mar 2025"
       },
       {
-        title: "Cryptorage",
-        description:
-          "Chrome extension using React.js and Supabase for secure data storage with blockchain integration.",
-        technologies: [
-          "React.js",
-          "Supabase",
-          "Walrus Blockchain",
-          "OCR",
-          "Gemini Nano",
-        ],
-        link: "https://dorahacks.io/buidl/16435",
+        title: "ServiceNow CMDB Health Dashboard",
+        description: "A comprehensive CMDB health monitoring dashboard using Performance Analytics, Dashboards, and custom scripting for enterprise-level visibility.",
+        technologies: ["ServiceNow", "Performance Analytics", "JavaScript", "Dashboards"],
+        period: "Aug 2022 - Dec 2022"
       },
       {
-        title: "Terminal AI Assistant",
-        description:
-          "Node.js CLI tool that converts natural language into Windows command line instructions.",
-        technologies: ["Node.js", "DeepSeek-V3 AI", "CLI"],
-        link: "https://www.npmjs.com/package/terminal-ai-assistant",
+        title: "Demand Forecasting Project",
+        description: "Implemented demand forecasting utilizing historical Adidas outlet sales data, improving inventory planning by 22%.",
+        technologies: ["Python", "Pandas", "Scikit-learn", "Time Series Analysis"],
+        period: "Aug 2023 - Dec 2023"
+      },
+      {
+        title: "Pothole Detection System",
+        description: "A robust automatic pothole detection system for image and video inputs with 85% accuracy.",
+        technologies: ["Python", "OpenCV", "Tkinter", "Computer Vision"],
+        period: "Aug 2023 - Dec 2023"
       },
     ],
     experience: [
       {
-        title: "Full-Stack Engineer",
-        company: "Lazarus Network Inc.",
-        period: "Feb 2024 - Feb 2025",
-        description:
-          "Developed frontend with Next.js and React.js, backend with Node.js. Managed AWS EC2 and Google Cloud servers. Added multichain support to Erebrus and developed Netsepio frontend.",
+        title: "Software Engineer",
+        company: "DXC Technology",
+        location: "Bangalore, India",
+        period: "Feb 2022 - Aug 2023",
+        description: "Led dual roles as Data Engineer and ServiceNow Developer, supporting enterprise-level implementations for clients with cross-functional responsibilities. Designed ETL/ELT pipelines, developed custom ServiceNow applications, and optimized data warehouse solutions."
+      },
+      {
+        title: "Data Analyst",
+        company: "SALIGRAM TECHNOLOGIES PRIVATE LIMITED",
+        location: "Hyderabad, India",
+        period: "May 2020 - Jan 2022",
+        description: "Built scalable data pipelines, developed BI dashboards, engineered automated data preprocessing workflows, and implemented data lake architecture on AWS S3."
+      },
+      {
+        title: "Graduate Assistant – Logics for Computer Science",
+        company: "Florida International University",
+        location: "Miami, FL",
+        period: "May 2024 - Present",
+        description: "Support professor by creating assignments, leading classes, and providing academic assistance to enhance students' understanding of logical reasoning and problem-solving."
       },
     ],
     education: [
       {
-        title: "BE Computer Engineering",
-        institution: "AISSMS COE, Pune",
-        period: "2020 - 2024",
-        description: "Bachelor's degree in Computer Engineering",
-      },
-      {
-        title: "12th Grade",
-        institution: "DR. M.K. UMATHE COLLEGE, Nagpur",
-        period: "2019 - 2020",
-        description: "Higher secondary education",
-      },
-      {
-        title: "10th Grade",
-        institution: "SCHOOL OF SCHOLARS, Nagpur",
-        period: "2017 - 2018",
-        description: "Secondary education",
-      },
+        title: "Master of Computer and Information Sciences",
+        institution: "Florida International University",
+        location: "Miami, FL, USA",
+        period: "Aug 2023 - May 2025",
+        description: "GPA: 3.85/4.0. Coursework: Advanced Database Systems, Machine Learning, Artificial Intelligence, Database Management Systems, Algorithms, Advanced Software Engineering"
+      }
     ],
     contact: {
-      email: "rushikeshnimkar396@gmail.com",
-      phone: "+919322675715",
-      location: "Nagpur",
-      linkedin: "https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/",
-      github: "https://github.com/Rushikeshnimkar",
-      portfolio: "https://rushikeshnimkar.xyz/",
+      email: "hemanth.yarraguravagari@gmail.com",
+      phone: "+1 786-678-1043",
+      location: "Miami, FL, USA",
+      linkedin: "https://linkedin.com/in/hemanth-reddy",
+      github: "https://github.com/Hemanthreddy410"
     },
-    awards: [
+    certifications: [
       {
-        title: "Solana Radar Hackathon 2024",
-        description:
-          "Achieved 4th place out of 200+ global teams, demonstrating expertise in blockchain technology and innovative problem-solving.",
+        title: "ServiceNow Certified System Administrator",
+        issuer: "ServiceNow",
+        description: "Professional certification validating expertise in ServiceNow system administration."
       },
       {
-        title: "Sui Overflow 2024",
-        description:
-          "Awarded the Community Favorite Award for Mystic Tarot, an innovative Web3 tarot reading platform on the Sui Network.",
+        title: "ServiceNow Certified Application Developer",
+        issuer: "ServiceNow",
+        description: "Professional certification validating expertise in developing applications on the ServiceNow platform."
       },
+      {
+        title: "Certified Implementation Specialist (ITSM)",
+        issuer: "ServiceNow",
+        description: "Professional certification validating expertise in implementing ServiceNow ITSM solutions."
+      },
+      {
+        title: "AWS Certified Solutions Architect – Professional",
+        issuer: "Amazon Web Services",
+        description: "Professional certification validating expertise in designing distributed systems on AWS."
+      }
     ],
     links: [
       {
-        title: "Portfolio Website",
-        url: "https://rushikeshnimkar.xyz",
-        description: "My personal portfolio showcasing projects and skills",
-      },
-      {
-        title: "Resume",
-        url: "https://rushikeshnimkar.xyz/resume",
-        description: "View my detailed resume",
+        title: "LinkedIn Profile",
+        url: "https://linkedin.com/in/hemanth-reddy",
+        description: "Connect with me professionally"
       },
       {
         title: "GitHub Profile",
-        url: "https://github.com/Rushikeshnimkar",
-        description: "Check out my code repositories and contributions",
+        url: "https://github.com/Hemanthreddy410",
+        description: "Check out my code repositories"
       },
       {
-        title: "LinkedIn",
-        url: "https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/",
-        description: "Connect with me professionally",
+        title: "Email",
+        url: "mailto:hemanth.yarraguravagari@gmail.com",
+        description: "Contact me via email"
       },
       {
-        title: "Gitsplit Project",
-        url: "https://ethglobal.com/showcase/gitsplit-pkp5d",
-        description: "Funding platform for open-source projects",
+        title: "CSV AI Analytics",
+        url: "https://github.com/Hemanthreddy410/csv-ai-analytics",
+        description: "Data analysis platform with AI-powered insights"
       },
       {
-        title: "Cryptorage Project",
-        url: "https://dorahacks.io/buidl/16435",
-        description: "Chrome extension for secure data storage",
-      },
-      {
-        title: "Terminal AI Assistant",
-        url: "https://www.npmjs.com/package/terminal-ai-assistant",
-        description: "CLI tool for natural language command conversion",
-      },
+        title: "ServiceNow CMDB Health Dashboard",
+        url: "https://github.com/Hemanthreddy410/servicenow-cmdb-dashboard",
+        description: "CMDB health monitoring dashboard"
+      }
     ],
   };
 
@@ -656,7 +673,7 @@ export async function POST(req: Request) {
         }
 
         // Modify system prompt based on whether structured data will be added
-        let systemContent = `You are Rushikesh Nimkar, a full-stack developer with expertise in Java, React.js, Next.js, and MySQL.`;
+        let systemContent = `You are Hemanth Reddy Yarraguravagari, a versatile Software Engineer with expertise in data engineering, ServiceNow development, and software applications.`;
 
         if (willHaveStructuredData) {
           // For queries that will have structured data, instruct the model to be brief
@@ -693,6 +710,8 @@ export async function POST(req: Request) {
           systemContent += `\n\nThis question is about my education. Just provide a brief introduction - the detailed education info will be shown in a structured format.`;
         } else if (queryType === "contact") {
           systemContent += `\n\nThis question is about my contact information. Just acknowledge the request - the actual contact details will be shown in a structured format.`;
+        } else if (queryType === "certifications") {
+          systemContent += `\n\nThis question is about my certifications. Just provide a brief introduction - the detailed certification info will be shown in a structured format.`;
         } else if (queryType === "links") {
           systemContent += `\n\nThis question is about my online profiles and resources. Just acknowledge the request - the actual links will be shown in a structured format.`;
         } else if (queryType) {
@@ -700,7 +719,7 @@ export async function POST(req: Request) {
         }
 
         systemContent += `\n\nRules:
-        1. Speak as Rushikesh using "I" and "my"
+        1. Speak as Hemanth using "I" and "my"
         2. Keep responses concise and focused
         3. If unsure about specific details, say "Feel free to contact me directly for more information"
         4. Use web search results when provided for up-to-date information

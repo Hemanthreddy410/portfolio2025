@@ -4,7 +4,8 @@ import Image from "next/image";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaPython, FaAws } from "react-icons/fa";
+import { SiServicenow } from "react-icons/si";
 
 const glitchAnimation = {
   textShadow: [
@@ -25,7 +26,7 @@ export default function HomePage() {
       setTimeout(() => {
         setIsGlitching(false);
       }, 100);
-    }, 15000); // Changed the interval to 1000ms
+    }, 15000); // Changed the interval to 15000ms
 
     return () => clearInterval(glitchInterval);
   }, []);
@@ -80,7 +81,7 @@ export default function HomePage() {
               >
                 <div className="relative w-full h-full">
                   <Image
-                    src="/rushikesh_nimkar.jpg"
+                    src="/hemanth_reddy.jpg"
                     alt="Profile"
                     fill
                     className={`object-cover rounded-full p-2 transition-opacity duration-100 ${
@@ -113,15 +114,15 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Bitcoin Symbol */}
+          {/* Data Symbol */}
           <motion.div
-            id="home-bitcoin-symbol"
+            id="home-data-symbol"
             className="absolute -bottom-6 right-0 sm:-bottom-10 md:-bottom-12 scale-50 sm:scale-90 md:scale-100"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.3 }}
           >
-            <TextHoverEffect text="₿" />
+            <TextHoverEffect text="⟨⟩" />
           </motion.div>
         </div>
 
@@ -152,7 +153,7 @@ export default function HomePage() {
                 repeatDelay: 5,
               }}
             >
-              Rushikesh Nimkar
+              Hemanth Reddy
             </motion.span>
           </motion.h1>
 
@@ -163,7 +164,7 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Full Stack Developer | Tech Enthusiast
+            Software Engineer | Data Specialist | ServiceNow Expert
           </motion.p>
 
           <motion.p
@@ -173,10 +174,9 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
           >
-            I turn coffee into code and bugs into features. Full-stack developer
-            who enjoys building digital puzzles and occasionally solving them.
-            Currently exploring blockchain, because why not add more blocks to
-            my stack?
+            Versatile Software Engineer with 4+ years of experience across data engineering, ServiceNow development, 
+            and software applications. Skilled in designing ETL/ELT pipelines, implementing ServiceNow solutions, 
+            and developing data-driven applications using Python, SQL, JavaScript, and cloud technologies.
           </motion.p>
 
           <motion.div
@@ -222,9 +222,9 @@ export default function HomePage() {
                 </button>
               </div>
 
-              {/* Sponsor Button */}
+              {/* Contact Button */}
               <div
-                id="home-sponsor-button-wrapper"
+                id="home-contact-button-wrapper"
                 className="relative w-[140px] overflow-hidden rounded-md"
               >
                 <div className="absolute inset-0">
@@ -232,23 +232,22 @@ export default function HomePage() {
                 </div>
                 <div className="absolute inset-[2px] bg-[#2a2a2a] rounded-[4px]" />
                 <button
-                  onClick={() =>
-                    window.open(
-                      "https://github.com/sponsors/Rushikeshnimkar",
-                      "_blank"
-                    )
-                  }
+                  onClick={() => (window.location.href = "/contact")}
                   className="relative z-10 w-full px-6 py-[6px] flex items-center justify-center gap-2 text-sm md:text-base"
                 >
-                  <span className="text-white">Sponsor</span>
+                  <span className="text-white">Contact</span>
                   <svg
-                    height="16"
-                    viewBox="0 0 16 16"
-                    width="16"
-                    className="text-red-500"
-                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 text-white"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    <path d="M4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.565 20.565 0 008 13.393a20.561 20.561 0 003.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.75.75 0 01-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5z" />
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
                 </button>
               </div>
@@ -263,7 +262,7 @@ export default function HomePage() {
               transition={{ delay: 0.8 }}
             >
               <a
-                href="https://github.com/Rushikeshnimkar"
+                href="https://github.com/Hemanthreddy410"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:rotate-12"
@@ -271,7 +270,7 @@ export default function HomePage() {
                 <FaGithub size={24} />
               </a>
               <a
-                href="https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/"
+                href="https://linkedin.com/in/hemanth-reddy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:-rotate-12"
@@ -279,14 +278,29 @@ export default function HomePage() {
                 <FaLinkedin size={24} />
               </a>
               <a
-                href="https://x.com/RushikeshN22296"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:rotate-12"
               >
-                <FaXTwitter size={24} />
+                <SiServicenow size={24} />
               </a>
             </motion.div>
+          </motion.div>
+
+          {/* Technology Badges */}
+          <motion.div
+            id="home-tech-badges"
+            className="flex flex-wrap gap-3 justify-center md:justify-start"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9 }}
+          >
+            <span className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">Python</span>
+            <span className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">ServiceNow</span>
+            <span className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">AWS</span>
+            <span className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">SQL</span>
+            <span className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs">Data Engineering</span>
           </motion.div>
         </motion.div>
       </div>

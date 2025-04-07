@@ -61,8 +61,8 @@ async function initializeServices() {
 // Add CORS check middleware
 function isAllowedOrigin(origin: string | null) {
   const allowedOrigins = [
-    "https://rushikeshnimkar.xyz",
-    "https://www.rushikeshnimkar.xyz",
+    "https://hemanthyarraguravagari.xyz",
+    "https://www.hemanthyarraguravagari.xyz",
     // "http://localhost:3000",
   ];
   return origin && allowedOrigins.includes(origin);
@@ -91,6 +91,13 @@ function isPageOrComponentSpecific(prompt: string): boolean {
     "project-grid",
     "project-title",
     "project-description",
+    // Add terms specific to your projects
+    "csv ai",
+    "csv analytics",
+    "servicenow dashboard",
+    "cmdb dashboard",
+    "demand forecasting",
+    "pothole detection",
   ];
 
   // Check for any project-related terms
@@ -102,7 +109,16 @@ function isPageOrComponentSpecific(prompt: string): boolean {
   }
 
   // Check for common page names
-  const pages = ["home", "about", "skills", "contact", "resume"];
+  const pages = [
+    "home", 
+    "about", 
+    "skills", 
+    "experience", 
+    "education", 
+    "contact", 
+    "resume", 
+    "certifications"
+  ];
 
   // Check if prompt mentions specific pages or IDs
   if (
@@ -113,7 +129,7 @@ function isPageOrComponentSpecific(prompt: string): boolean {
     ) ||
     promptLower.includes("section") ||
     promptLower.includes("#") || // Looking for IDs
-    /header|title|card|container|profile/.test(promptLower) // Common components
+    /header|title|card|container|profile|servicenow|data|engineering|aws|azure/.test(promptLower) // Common components + your keywords
   ) {
     console.log(`🎯 Detected page-specific term: "${prompt}"`);
     return true;
@@ -266,7 +282,9 @@ Projects are displayed in a responsive grid with ID "projects-grid".
 Each project card has ID "project-card-{id}" where {id} is the project identifier.
 Project cards contain media section "project-media-{id}", title "project-title-{id}", 
 description "project-description-{id}", tags "project-tags-{id}", and links "project-links-{id}".
-The modal has ID "project-modal-backdrop" with a content area "project-modal-{id}".`;
+The modal has ID "project-modal-backdrop" with a content area "project-modal-{id}".
+Technologies are shown as tags with classes "tech-tag" and "project-tech-{tech}".
+Each project also has specific dates/period listed with class "project-period".`;
           }
         }
       } catch (error) {
@@ -286,7 +304,9 @@ Projects are displayed in a responsive grid with ID "projects-grid".
 Each project card has ID "project-card-{id}" where {id} is the project identifier.
 Project cards contain media section "project-media-{id}", title "project-title-{id}", 
 description "project-description-{id}", tags "project-tags-{id}", and links "project-links-{id}".
-The modal has ID "project-modal-backdrop" with a content area "project-modal-{id}".`;
+The modal has ID "project-modal-backdrop" with a content area "project-modal-{id}".
+Technologies are shown as tags with classes "tech-tag" and "project-tech-{tech}".
+Each project also has specific dates/period listed with class "project-period".`;
         }
       }
     } else {
@@ -323,6 +343,20 @@ For project-specific changes:
 - Project cards: document.querySelectorAll('.bg-neutral-900.rounded-xl.overflow-hidden') or #projects-grid > div
 - Project titles: document.querySelectorAll('.text-lg.font-bold.text-neutral-200') or h2 elements within project cards
 - Project descriptions: document.querySelectorAll('.text-sm.text-neutral-400') within project cards
+- Technology tags: document.querySelectorAll('.tech-tag') for all tech tags
+
+For experience section changes:
+- Experience container: #experience-section or .experience-container
+- Job titles: .job-title or h3 elements within experience items
+- Company names: .company-name elements
+- Date ranges: .date-range elements
+- Job descriptions: .job-description elements
+
+For skill section changes:
+- Skills container: #skills-section or .skills-container
+- Skill categories: .skill-category elements
+- Skill items: .skill-item elements
+- Progress bars: .skill-progress elements
 
 IMPORTANT: Respond ONLY with the JavaScript function 'applyThemeChanges' wrapped in triple backticks with js language identifier. Function MUST return a non-empty array of changes.`;
 
@@ -338,8 +372,8 @@ IMPORTANT: Respond ONLY with the JavaScript function 'applyThemeChanges' wrapped
         method: "POST",
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          "HTTP-Referer": "https://rushikeshnimkar.xyz",
-          "X-Title": "Rushikesh's Portfolio",
+          "HTTP-Referer": "https://hemanthyarraguravagari.xyz",
+          "X-Title": "Hemanth's Portfolio",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({

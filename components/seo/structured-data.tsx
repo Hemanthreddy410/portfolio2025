@@ -6,19 +6,45 @@ export function PersonSchema() {
         __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          name: "Rushikesh Nimkar",
-          url: "https://rushikeshnimkar.com",
+          name: "Hemanth Reddy Yarraguravagari",
+          url: "https://hemanthyarraguravagari.xyz",
           sameAs: [
-            "https://github.com/Rushikeshnimkar",
-            "https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/",
-            "https://x.com/RushikeshN22296"
+            "https://github.com/Hemanthreddy410",
+            "https://linkedin.com/in/hemanth-reddy"
           ],
-          jobTitle: "Full Stack Developer",
-          knowsAbout: ["Web Development", "Blockchain", "TypeScript", "React", "Next.js"],
+          jobTitle: "Software Engineer",
+          knowsAbout: [
+            "Data Engineering", 
+            "ServiceNow Development", 
+            "ETL/ELT Pipelines", 
+            "Python", 
+            "SQL", 
+            "AWS", 
+            "Data Warehousing"
+          ],
           image: "/profile.jpg",
-          description: "Full Stack Developer specializing in Next.js, TypeScript, and Blockchain development."
+          description: "Software Engineer specializing in Data Engineering, ServiceNow Development, and ETL/ELT solutions.",
+          alumniOf: {
+            "@type": "CollegeOrUniversity",
+            name: "Florida International University",
+            location: "Miami, FL"
+          },
+          hasCredential: [
+            {
+              "@type": "EducationalOccupationalCredential",
+              name: "ServiceNow Certified System Administrator"
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              name: "ServiceNow Certified Application Developer"
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              name: "AWS Certified Solutions Architect – Professional"
+            }
+          ]
         })
       }}
     />
   );
-} 
+}

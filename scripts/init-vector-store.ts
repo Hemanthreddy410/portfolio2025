@@ -1,10 +1,11 @@
 import * as dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
-import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import { Pinecone } from "@pinecone-database/pinecone";
 import { Document } from "@langchain/core/documents";
 import { PineconeStore } from "@langchain/pinecone";
+import { ChatAnthropic } from "@langchain/anthropic";
+import { AnthropicEmbeddings } from "@langchain/anthropic";
 // Import the character content from the character.ts file
 import { characterContent } from "../components/character/character.js";
 
@@ -15,13 +16,13 @@ dotenv.config({ path: resolve(__dirname, "../.env") });
 
 // Log environment variables (for debugging, remove in production)
 console.log("PINECONE_API_KEY exists:", !!process.env.PINECONE_API_KEY);
-console.log("GOOGLE_API_KEY exists:", !!process.env.GOOGLE_API_KEY);
+console.log("ANTHROPIC_API_KEY exists:", !!process.env.ANTHROPIC_API_KEY);
 
-// Initialize Google Gemini embeddings
+// Initialize Claude embeddings
 const getEmbeddings = () => {
-  return new GoogleGenerativeAIEmbeddings({
-    apiKey: process.env.GOOGLE_API_KEY!,
-    modelName: "text-embedding-004", // Gemini's embedding model
+  return new AnthropicEmbeddings({
+    apiKey: process.env.ANTHROPIC_API_KEY!,
+    modelName: "claude-3-sonnet-20240229", // Claude's embedding model
   });
 };
 
@@ -89,8 +90,8 @@ async function initializeVectorStore() {
       );
     }
 
-    if (!process.env.GOOGLE_API_KEY) {
-      throw new Error("GOOGLE_API_KEY is not defined in environment variables");
+    if (!process.env.ANTHROPIC_API_KEY) {
+      throw new Error("ANTHROPIC_API_KEY is not defined in environment variables");
     }
 
     console.log("API keys found, proceeding with initialization...");
@@ -123,7 +124,7 @@ async function initializeVectorStore() {
     );
 
     // Get or create the index
-    const indexName = process.env.PINECONE_INDEX_NAME || "rushikesh-portfolio";
+    const indexName = process.env.PINECONE_INDEX_NAME || "hemanth-portfolio";
     console.log(`Using index name: ${indexName}`);
 
     // List existing indexes
@@ -138,7 +139,7 @@ async function initializeVectorStore() {
       try {
         await pinecone.createIndex({
           name: indexName,
-          dimension: 768, // Gemini embeddings dimension
+          dimension: 1536, // Claude embeddings dimension
           metric: "cosine",
           spec: {
             serverless: {
@@ -160,7 +161,7 @@ async function initializeVectorStore() {
         try {
           await pinecone.createIndex({
             name: indexName,
-            dimension: 768,
+            dimension: 1536, // Claude embeddings dimension
             metric: "cosine",
             spec: {
               serverless: {
@@ -220,7 +221,7 @@ async function initializeVectorStore() {
 
     // Test a query to verify it works
     console.log("Testing a query...");
-    const testQuery = "What are Rushikesh's skills?";
+    const testQuery = "What are Hemanth's skills?";
     const results = await vectorStore.similaritySearch(testQuery, 2);
     console.log("Test query results:");
     results.forEach((result, i) => {
@@ -245,7 +246,7 @@ function identifySection(chunk: string): string {
   if (lowerChunk.includes("education")) return "education";
   if (lowerChunk.includes("projects")) return "projects";
   if (lowerChunk.includes("skills")) return "skills";
-  if (lowerChunk.includes("awards")) return "awards";
+  if (lowerChunk.includes("certifications")) return "certifications";
   if (lowerChunk.includes("languages")) return "languages";
   if (lowerChunk.includes("hobbies")) return "hobbies";
   if (

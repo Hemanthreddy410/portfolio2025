@@ -5,43 +5,43 @@ import { FiMapPin, FiAward, FiBriefcase, FiBook } from "react-icons/fi";
 export default function ExperiencePage() {
   const data = [
     {
-      title: "2020-2024",
+      title: "2023-2025",
       content: (
         <div className="space-y-4">
           <div className="flex items-center gap-2 text-white">
             <FiBook className="w-5 h-5 text-blue-400" />
             <div>
-              <h3 className="text-lg font-semibold">Bachelor of Engineering</h3>
+              <h3 className="text-lg font-semibold">Master of Computer and Information Sciences</h3>
               <div className="flex items-center gap-2 text-neutral-400 text-sm mt-1">
                 <FiMapPin className="w-4 h-4" />
-                <span>Pune, IN</span>
+                <span>Florida International University, Miami, FL, USA</span>
               </div>
             </div>
           </div>
 
           <div className="pl-7">
             <p className="text-neutral-300 text-sm leading-relaxed">
-              Graduated with BE in Computer Engineering, focusing on software
-              development and computer science fundamentals. Developed strong
-              problem-solving skills and technical expertise through
-              comprehensive coursework and practical projects.
+              Pursuing Master's degree with a GPA of 3.85/4.0, focusing on advanced database systems, 
+              machine learning, artificial intelligence, and advanced software engineering. 
+              Developing expertise in data engineering and AI implementations through rigorous 
+              coursework and practical projects.
             </p>
           </div>
         </div>
       ),
     },
     {
-      title: "Feb 2024 - Feb 2025",
+      title: "May 2024 - Present",
       content: (
         <div className="space-y-4">
           <div className="flex items-center gap-2 text-white">
             <FiBriefcase className="w-5 h-5 text-blue-400" />
             <div>
-              <h3 className="text-lg font-semibold">Fullstack Developer</h3>
+              <h3 className="text-lg font-semibold">Graduate Assistant – Logics for Computer Science</h3>
               <div className="flex items-center gap-2 text-neutral-400 text-sm mt-1">
-                <span className="font-medium">Lazarus Network</span>
+                <span className="font-medium">Florida International University</span>
                 <span>•</span>
-                <span>Remote</span>
+                <span>Miami, FL</span>
               </div>
             </div>
           </div>
@@ -49,27 +49,26 @@ export default function ExperiencePage() {
           <div className="pl-7">
             <div className="space-y-3 text-sm text-neutral-300">
               <p className="leading-relaxed">
-                Full-stack development role focusing on building scalable web
-                applications and maintaining cloud infrastructure.
+                Supporting academic excellence by assisting professors and students in computer science logic courses.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
                   <span className="text-blue-400 mt-1">▹</span>
                   <span>
-                    Developed backend services using Golang and Node.js
+                    Support the professor by creating assignments and leading classes
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-blue-400 mt-1">▹</span>
-                  <span>Built responsive frontends with Next.js and React</span>
+                  <span>Provide academic assistance to enhance students' understanding of logical reasoning</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-blue-400 mt-1">▹</span>
-                  <span>Managed AWS EC2 and Google Cloud infrastructure</span>
+                  <span>Develop instructional materials to facilitate classroom learning</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-blue-400 mt-1">▹</span>
-                  <span>Implemented CI/CD pipelines with GitHub Actions</span>
+                  <span>Conduct office hours to provide additional support on complex logical concepts</span>
                 </li>
               </ul>
             </div>
@@ -78,86 +77,158 @@ export default function ExperiencePage() {
       ),
     },
     {
-      title: "Awards and Honors",
+      title: "Feb 2022 - Aug 2023",
+      content: (
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 text-white">
+            <FiBriefcase className="w-5 h-5 text-blue-400" />
+            <div>
+              <h3 className="text-lg font-semibold">Software Engineer</h3>
+              <div className="flex items-center gap-2 text-neutral-400 text-sm mt-1">
+                <span className="font-medium">DXC Technology</span>
+                <span>•</span>
+                <span>Bangalore, India</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="pl-7">
+            <div className="space-y-3 text-sm text-neutral-300">
+              <p className="leading-relaxed">
+                Led dual roles as Data Engineer and ServiceNow Developer, supporting enterprise-level implementations 
+                for clients with cross-functional responsibilities.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 mt-1">▹</span>
+                  <span>
+                    Designed ETL/ELT pipelines using AWS Glue, Python, and SQL that processed over 5TB of data daily
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 mt-1">▹</span>
+                  <span>Developed custom ServiceNow applications resulting in 35% improvement in IT service delivery</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 mt-1">▹</span>
+                  <span>Architected data warehouse solutions on AWS Redshift, implementing star/snowflake schemas</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 mt-1">▹</span>
+                  <span>Created secure REST/SOAP integrations between ServiceNow and third-party systems</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "May 2020 - Jan 2022",
+      content: (
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 text-white">
+            <FiBriefcase className="w-5 h-5 text-blue-400" />
+            <div>
+              <h3 className="text-lg font-semibold">Data Analyst</h3>
+              <div className="flex items-center gap-2 text-neutral-400 text-sm mt-1">
+                <span className="font-medium">SALIGRAM TECHNOLOGIES PRIVATE LIMITED</span>
+                <span>•</span>
+                <span>Hyderabad, India</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="pl-7">
+            <div className="space-y-3 text-sm text-neutral-300">
+              <p className="leading-relaxed">
+                Built and maintained data infrastructure while delivering actionable insights through 
+                visualization and analysis.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 mt-1">▹</span>
+                  <span>
+                    Built scalable data pipelines using Python, SQL, Apache Airflow, and Kafka
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 mt-1">▹</span>
+                  <span>Developed interactive BI dashboards using Tableau and Excel that increased customer retention by 18%</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 mt-1">▹</span>
+                  <span>Engineered automated data preprocessing workflows with Python (Pandas, NumPy, Scikit-learn)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400 mt-1">▹</span>
+                  <span>Implemented data lake architecture on AWS S3 improving data retrieval speeds by 30%</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Certifications",
       content: (
         <div className="space-y-4">
           <div className="flex items-center gap-2 text-white">
             <FiAward className="w-5 h-5 text-blue-400" />
-            <h3 className="text-lg font-semibold">Hackathon Achievements</h3>
+            <h3 className="text-lg font-semibold">Professional Certifications</h3>
           </div>
 
           <div className="pl-7 space-y-6 ">
-            {/* Solana Radar Hackathon */}
+            {/* ServiceNow Certifications */}
             <div className="space-y-2">
               <div className="flex items-center gap-3">
                 <span className="flex-shrink-0 w-2 h-2 rounded-full bg-blue-400" />
-                <a
-                  href="https://arena.colosseum.org/projects/explore/netsepio?previous=L3Byb2plY3RzL2V4cGxvcmU_c2VlZD1iNGI0ZTYwYzViNGE0NzkwJnNlYXJjaD1uZXRzZXA&ref=blog.colosseum.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group"
-                >
-                  <h4 className="text-white font-medium hover:text-blue-400 transition-colors duration-200 inline-flex items-center gap-1">
-                    Solana Radar Hackathon 2024
-                    <svg
-                      className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                  </h4>
-                </a>
+                <h4 className="text-white font-medium">ServiceNow Certifications</h4>
               </div>
               <div className="pl-5">
                 <p className="text-neutral-300 text-sm leading-relaxed">
-                  Achieved{" "}
-                  <span className="text-blue-400 font-medium">4th place</span>{" "}
-                  out of 200+ global teams, demonstrating expertise in
-                  blockchain technology and innovative problem-solving.
+                  Achieved multiple professional certifications validating expertise in ServiceNow platform
+                  implementation, administration, and development.
                 </p>
-                <div className="flex gap-2 mt-2">
+                <div className="flex flex-wrap gap-2 mt-2">
                   <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">
-                    Global Competition
+                    System Administrator
                   </span>
                   <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">
-                    200+ Teams
+                    Application Developer
+                  </span>
+                  <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">
+                    Implementation Specialist (ITSM)
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Sui Overflow */}
+            {/* AWS Certification */}
             <div className="space-y-2">
               <div className="flex items-center gap-3">
                 <span className="flex-shrink-0 w-2 h-2 rounded-full bg-blue-400" />
-                <h4 className="text-white font-medium">Sui Overflow 2024</h4>
+                <h4 className="text-white font-medium">AWS Certification</h4>
               </div>
               <div className="pl-5">
                 <p className="text-neutral-300 text-sm leading-relaxed">
-                  Awarded the{" "}
+                  Earned the{" "}
                   <span className="text-blue-400 font-medium">
-                    Community Favorite Award
+                    AWS Certified Solutions Architect – Professional
                   </span>{" "}
-                  for Mystic Tarot - an innovative Web3 tarot reading platform
-                  on the Sui Network, showcasing expertise in blockchain and
-                  user-centric design.
+                  certification, demonstrating advanced expertise in designing distributed systems
+                  on AWS and implementing complex cloud architectures.
                 </p>
                 <div className="flex gap-2 mt-2">
                   <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">
-                    Community Favorite
+                    Professional Level
                   </span>
                   <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">
-                    Web3
+                    Cloud Architecture
                   </span>
                   <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">
-                    Sui Network
+                    AWS
                   </span>
                 </div>
               </div>
