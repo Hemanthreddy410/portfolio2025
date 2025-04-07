@@ -1,0 +1,295 @@
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { TextHoverEffect } from "@/components/ui/text-hover-effect";
+import { useState, useEffect } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
+const glitchAnimation = {
+  textShadow: [
+    "0 0 0 #00ffff",
+    "2px 2px 0 #ff00ff, -2px -2px 0 #00ffff, 2px 2px 0 #ff00ff",
+    "0 0 0 #00ffff",
+  ],
+  opacity: [1, 0.8, 1],
+  x: [0, -1, 1, 0],
+};
+
+export default function HomePage() {
+  const [isGlitching, setIsGlitching] = useState(false);
+
+  useEffect(() => {
+    const glitchInterval = setInterval(() => {
+      setIsGlitching(true);
+      setTimeout(() => {
+        setIsGlitching(false);
+      }, 100);
+    }, 15000); // Changed the interval to 1000ms
+
+    return () => clearInterval(glitchInterval);
+  }, []);
+
+  return (
+    <main
+      id="home"
+      className="container mx-auto px-4 min-h-screen flex items-center justify-center pt-16 md:pt-0"
+    >
+      <div
+        id="home-content-wrapper"
+        className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 max-w-7xl w-full py-8 md:py-0"
+      >
+        {/* Profile Image Section */}
+        <div
+          id="home-profile-section"
+          className="flex-1 flex justify-center relative order-1 md:order-2"
+        >
+          <motion.div
+            id="home-profile-image-container"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="relative"
+          >
+            <div
+              id="home-profile-image-wrapper"
+              className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72"
+            >
+              <div className="absolute inset-0 bg-blue-500/20 rounded-full filter blur-[40px]" />
+              <motion.div
+                animate={{
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="absolute inset-0 rounded-full border-2 border-blue-500/30 border-dashed"
+              />
+              <motion.div
+                className="absolute inset-4 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full overflow-hidden border-2 border-blue-500/30"
+                animate={{
+                  x: isGlitching ? [-2, 2, -2, 0] : 0,
+                  y: isGlitching ? [1, -1, 1, 0] : 0,
+                }}
+                transition={{
+                  duration: 0.2,
+                  ease: "easeInOut",
+                }}
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/rushikesh_nimkar.jpg"
+                    alt="Profile"
+                    fill
+                    className={`object-cover rounded-full p-2 transition-opacity duration-100 ${
+                      isGlitching ? "opacity-0" : "opacity-100"
+                    }`}
+                    priority
+                  />
+                  <Image
+                    src="/profile2.png"
+                    alt="Profile Glitch"
+                    fill
+                    className={`object-cover rounded-full p-2 transition-opacity duration-100 ${
+                      isGlitching ? "opacity-100" : "opacity-0"
+                    }`}
+                    priority
+                  />
+                </div>
+                {isGlitching && (
+                  <motion.div
+                    className="absolute inset-0 bg-blue-500/30"
+                    animate={{
+                      opacity: [0, 0.5, 0],
+                    }}
+                    transition={{
+                      duration: 0.1,
+                    }}
+                  />
+                )}
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Bitcoin Symbol */}
+          <motion.div
+            id="home-bitcoin-symbol"
+            className="absolute -bottom-6 right-0 sm:-bottom-10 md:-bottom-12 scale-50 sm:scale-90 md:scale-100"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.3 }}
+          >
+            <TextHoverEffect text="₿" />
+          </motion.div>
+        </div>
+
+        {/* Text Content Section */}
+        <motion.div
+          id="home-text-content"
+          className="flex-1 text-center md:text-left space-y-4 md:space-y-8 order-2 md:order-1"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.h1
+            id="home-title"
+            className="text-2xl sm:text-4xl md:text-6xl lg:text-6xl font-bold"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Hi, I&apos;m <br className="hidden sm:block" />
+            <motion.span
+              className="text-blue-500 inline-block"
+              animate={glitchAnimation}
+              transition={{
+                duration: 0.2,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+                repeatDelay: 5,
+              }}
+            >
+              Rushikesh Nimkar
+            </motion.span>
+          </motion.h1>
+
+          <motion.p
+            id="home-subtitle"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            Full Stack Developer | Tech Enthusiast
+          </motion.p>
+
+          <motion.p
+            id="home-description"
+            className="text-sm sm:text-base md:text-lg text-gray-500 max-w-xl mx-auto md:mx-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+          >
+            I turn coffee into code and bugs into features. Full-stack developer
+            who enjoys building digital puzzles and occasionally solving them.
+            Currently exploring blockchain, because why not add more blocks to
+            my stack?
+          </motion.p>
+
+          <motion.div
+            id="home-action-buttons"
+            className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-4 md:mt-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+          >
+            <div
+              id="home-main-buttons"
+              className="flex flex-row gap-4 items-center"
+            >
+              {/* CV Button */}
+              <div
+                id="home-cv-button-wrapper"
+                className="relative w-[140px] overflow-hidden rounded-md"
+              >
+                <div className="absolute inset-0">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-gradient-xy" />
+                </div>
+                <div className="absolute inset-[2px] bg-[#2a2a2a] rounded-[4px]" />
+                <button
+                  onClick={() => (window.location.href = "/resume")}
+                  className="relative z-10 w-full px-6 py-[6px] flex items-center justify-center gap-2 text-sm md:text-base"
+                >
+                  <span className="text-white">View CV</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 text-white"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="12" y1="18" x2="12" y2="12" />
+                    <line x1="9" y1="15" x2="15" y2="15" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Sponsor Button */}
+              <div
+                id="home-sponsor-button-wrapper"
+                className="relative w-[140px] overflow-hidden rounded-md"
+              >
+                <div className="absolute inset-0">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-gradient-xy" />
+                </div>
+                <div className="absolute inset-[2px] bg-[#2a2a2a] rounded-[4px]" />
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://github.com/sponsors/Rushikeshnimkar",
+                      "_blank"
+                    )
+                  }
+                  className="relative z-10 w-full px-6 py-[6px] flex items-center justify-center gap-2 text-sm md:text-base"
+                >
+                  <span className="text-white">Sponsor</span>
+                  <svg
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                    className="text-red-500"
+                    fill="currentColor"
+                  >
+                    <path d="M4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.565 20.565 0 008 13.393a20.561 20.561 0 003.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.75.75 0 01-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <motion.div
+              id="home-social-links"
+              className="flex gap-6 items-center mt-4 sm:mt-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              <a
+                href="https://github.com/Rushikeshnimkar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:rotate-12"
+              >
+                <FaGithub size={24} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:-rotate-12"
+              >
+                <FaLinkedin size={24} />
+              </a>
+              <a
+                href="https://x.com/RushikeshN22296"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:rotate-12"
+              >
+                <FaXTwitter size={24} />
+              </a>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </main>
+  );
+}
